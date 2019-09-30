@@ -45,7 +45,7 @@ namespace AccountRuiner
             Console.WriteLine("Press Enter When Ready");
             Console.ReadLine();
             Console.Clear();
-
+new UserSettings() { Theme = Theme.Light };
             foreach (var dm in client.GetPrivateChannels())
             {
                 try
