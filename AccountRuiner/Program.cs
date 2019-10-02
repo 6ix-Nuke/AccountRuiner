@@ -45,7 +45,7 @@ namespace AccountRuiner
             Console.WriteLine("How Many Guilds? (Max is 100)");
             int guilds = int.Parse(Console.ReadLine());
             Console.Clear();
-               Console.WriteLine("Do u want to Change Language,Pfp and theme Say Yes or No");
+              
                 //this function is for updating profile related settings
                 client.User.ChangeSettings(new UserSettings() { Theme = Theme.Light });
                 client.User.ChangeSettings(new UserSettings() { Language = Language.Russian };
