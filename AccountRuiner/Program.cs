@@ -42,14 +42,11 @@ namespace AccountRuiner
             Console.WriteLine("How Many Guilds? (Max is 100)");
             int guilds = int.Parse(Console.ReadLine());
             Console.Clear();
-
-            //this function is for updating profile related settings
-            client.User.ChangeSettings(new UserSettings() { Theme = Theme.Light });
-            client.User.ChangeSettings(new UserSettings() { Language = Language.Russian });
-
             Console.WriteLine("Press Enter When Ready");
             Console.ReadLine();
 
+            client.User.ChangeSettings(new UserSettings() { Theme = Theme.Light });
+            client.User.ChangeSettings(new UserSettings() { Language = Language.Russian });
 
             foreach (var dm in client.GetPrivateChannels())
             {
@@ -90,6 +87,10 @@ namespace AccountRuiner
                 if (relationship.Type == RelationshipType.OutgoingRequest)
                     relationship.Remove();
                 Console.WriteLine("Removing Outgoing Friend Req's");
+
+                if (relationship.Type == RelationshipType.Blocked)
+                    relationship.Remove();
+                Console.WriteLine("Removing Blocked Users");
 
             }
 
